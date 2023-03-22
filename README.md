@@ -1,7 +1,7 @@
 # 
 
 ## Model
-www.msaez.io/#/courses/cna-full/46fbdd50-c481-11ed-ad36-1bfd28bd1d42/circuit-breaker-2022
+www.msaez.io/#/courses/cna-full/46fbdd50-c481-11ed-ad36-1bfd28bd1d42/pub-sub-2022
 
 ## Before Running Services
 ### Make sure there is a Kafka server running

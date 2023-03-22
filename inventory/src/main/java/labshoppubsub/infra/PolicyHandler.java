@@ -38,4 +38,25 @@ public class PolicyHandler {
           acknowledgment.acknowledge();  
           */
     }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='OrderPlaced'"
+    )
+    public void wheneverOrderPlaced_DecreaseStock(
+        @Payload OrderPlaced orderPlaced,
+        @Header(KafkaHeaders.ACKNOWLEDGMENT) Acknowledgment acknowledgment,
+        @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) byte[] messageKey
+    ) {
+        OrderPlaced event = orderPlaced;
+        System.out.println(
+            "\n\n##### listener DecreaseStock : " + orderPlaced + "\n\n"
+        );
+
+        // Sample Logic //
+        Inventory.decreaseStock(event);
+
+        // Manual Offset Commit //
+        acknowledgment.acknowledge();
+    }
 }
